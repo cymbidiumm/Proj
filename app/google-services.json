@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "711219464579",
+    "firebase_url": "https://stay-indoors-project.firebaseio.com",
+    "project_id": "stay-indoors-project",
+    "storage_bucket": "stay-indoors-project.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:711219464579:android:80cb94767f3a121f3a0eb6",
+        "android_client_info": {
+          "package_name": "com.gmailcymbidiumm.stayindoorsapp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "711219464579-58ss52587ijcn1m548ma5ra08u2jp2bn.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.gmailcymbidiumm.stayindoorsapp",
+            "certificate_hash": "960f35d17fa82250e5160b8f7d1799d290807c39"
+          }
+        },
+        {
+          "client_id": "711219464579-sgno38eiv57hg67pe979fjhkph2nf23e.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCQ1oB-ivGl1rERx1H---HscYb99Myesv8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "711219464579-sgno38eiv57hg67pe979fjhkph2nf23e.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

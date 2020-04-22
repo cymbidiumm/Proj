@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/birminghammuseum"
+    tools:context=".Register">
+
+
+    <FrameLayout
+        android:id="@+id/fragment_container"
+        android:layout_above="@+id/bottom"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"/>
+
+    <com.google.android.material.appbar.AppBarLayout
+        android:id="@+id/bottom"
+        android:layout_alignParentBottom="true"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+       <com.google.android.material.bottomnavigation.BottomNavigationView
+           android:layout_width="match_parent"
+           android:layout_height="wrap_content"
+           android:id="@+id/bottom_navigation"
+           app:itemIconTint="#ffffff"
+           app:labelVisibilityMode="unlabeled"
+           android:background="#660408"
+           app:menu="@menu/bottom_navigation"
+        />
+
+    </com.google.android.material.appbar.AppBarLayout>
+
+
+
+
+    <TextView
+        android:id="@+id/verifyMsg"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="5dp"
+        android:text="Email not verified. Verify now!"
+        android:textColor="#ffffff"
+        android:textSize="22sp"
+        android:textStyle="bold"
+        android:visibility="gone"
+        android:fontFamily="@font/alex_brush"/>
+
+    <TextView
+        android:id="@+id/resendCodeBtn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/verifyMsg"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="10dp"
+        android:text="@string/resend_verification_email"
+        android:textColor="#ffffff"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        android:visibility="gone"
+        android:fontFamily="@font/alex_brush"/>
+
+    <Button
+        android:id="@+id/logOutBtn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="190dp"
+        android:layout_marginLeft="18dp"
+        android:background="#660408"
+        android:padding="10dp"
+        android:text="@string/log_out"
+        android:textAllCaps="true"
+        android:textColor="#ffffff"
+        android:textSize="12sp"
+        android:textStyle="bold"
+        android:onClick="logout"
+        />
+
+</RelativeLayout>

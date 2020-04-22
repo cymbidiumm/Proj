@@ -1,0 +1,13 @@
+<resources>
+    <string name="app_name">Stay indoors app</string>
+    <string name="stayindoors">stayIndoors</string>
+    <string name="register">Register</string>
+    <string name="already_have_an_account_log_in">Already have an account? Log in.</string>
+    <string name="log_out">Log out</string>
+    <string name="verify_now">Verify now</string>
+    <string name="email_not_verified">Email not verified</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="resend_verification_email">Resend verification email</string>
+</resources>
