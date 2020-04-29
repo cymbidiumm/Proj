@@ -1,6 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.coordinatorlayout.widget.CoordinatorLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+<RelativeLayout
+
+
+
+
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -19,6 +29,16 @@
         android:layout_alignParentBottom="true"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
+
+        <!--<androidx.appcompat.widget.Toolbar-->
+
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:background="#660408"-->
+            <!--app:title="stayIndoors"-->
+            <!--app:titleTextColor="#ffffff">-->
+
+        <!--</androidx.appcompat.widget.Toolbar>-->
 
        <com.google.android.material.bottomnavigation.BottomNavigationView
            android:layout_width="match_parent"
@@ -69,6 +89,7 @@
         android:layout_alignParentBottom="true"
         android:layout_marginBottom="190dp"
         android:layout_marginLeft="18dp"
+        android:layout_marginStart="18dp"
         android:background="#660408"
         android:padding="10dp"
         android:text="@string/log_out"
@@ -80,3 +101,4 @@
         />
 
 </RelativeLayout>
+</androidx.coordinatorlayout.widget.CoordinatorLayout>
