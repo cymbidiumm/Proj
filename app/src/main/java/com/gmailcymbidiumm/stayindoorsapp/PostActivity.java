@@ -39,8 +39,8 @@ public class PostActivity extends AppCompatActivity {
     StorageReference storageReference;
 
     ImageView close,image_added;
-    TextView post;
-    EditText description;
+    TextView post,challengeDescriptionTv,challengeTitleTv,timeTv;
+    EditText description,challengeTitleEt,timeEt;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -51,6 +51,12 @@ public class PostActivity extends AppCompatActivity {
         image_added = findViewById(R.id.image_added);
         post = findViewById(R.id.post);
         description = findViewById(R.id.description);
+        challengeTitleEt = findViewById(R.id.challengeTitleEt);
+        timeEt = findViewById(R.id.timeEt);
+        challengeDescriptionTv = findViewById(R.id.challengeDescriptionTv);
+        challengeTitleTv = findViewById(R.id.challengeTitleTv);
+        timeTv = findViewById(R.id.timeTv);
+
 
         storageReference = FirebaseStorage.getInstance().getReference("posts");
 
@@ -115,6 +121,8 @@ public class PostActivity extends AppCompatActivity {
                         hashMap.put("postid",postid);
                         hashMap.put("postimage",myUrl);
                         hashMap.put("description",description.getText().toString());
+                        hashMap.put("challengeTitleEt",challengeTitleEt.getText().toString());
+                        hashMap.put("timeEt",timeEt.getText().toString());
                         hashMap.put("publisher", FirebaseAuth.getInstance().getCurrentUser().getUid());
 
                         reference.child(postid).setValue(hashMap);

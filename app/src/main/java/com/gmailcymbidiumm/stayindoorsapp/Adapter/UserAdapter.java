@@ -18,6 +18,11 @@ import com.gmailcymbidiumm.stayindoorsapp.Model.User;
 import com.gmailcymbidiumm.stayindoorsapp.R;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 import java.util.List;
 
@@ -43,19 +48,23 @@ public class UserAdapter extends RecyclerView.Adapter<UserAdapter.ViewHolder> {
     }
 
     @Override
-    public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull final ViewHolder holder, int position) {
 
         firebaseUser = FirebaseAuth.getInstance().getCurrentUser();
 
         final User user = mUsers.get(position);
 
+        holder.btn_follow.setVisibility(View.VISIBLE);
         holder.btn_send.setVisibility(View.VISIBLE);
         holder.username.setText(user.getfName());
         Glide.with(mContext).load(user.getImageurl()).into(holder.image_profile);
+        isFollowing(user.getId(),holder.btn_follow);
 
         if(user.getId().equals(firebaseUser.getUid())){
-            holder.btn_send.setVisibility(View.GONE);
+            holder.btn_follow.setVisibility(View.GONE);
         }
+
+
 
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -65,6 +74,23 @@ public class UserAdapter extends RecyclerView.Adapter<UserAdapter.ViewHolder> {
                 editor.apply();;
 
                 ((FragmentActivity)mContext).getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,new ProfileFragment()).commit();
+            }
+        });
+
+        holder.btn_follow.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if(holder.btn_follow.getText().toString().equals("keepInTouch")){
+                    FirebaseDatabase.getInstance().getReference().child("KeepInTouch").child(firebaseUser.getUid())
+                            .child("alreadyBonded").child(user.getId()).setValue(true);
+                    FirebaseDatabase.getInstance().getReference().child("KeepInTouch").child(user.getId())
+                            .child("mates").child(firebaseUser.getUid()).setValue(true);
+                }else{
+                    FirebaseDatabase.getInstance().getReference().child("KeepInTouch").child(firebaseUser.getUid())
+                            .child("alreadyBonded").child(user.getId()).removeValue();
+                    FirebaseDatabase.getInstance().getReference().child("KeepInTouch").child(user.getId())
+                            .child("mates").child(firebaseUser.getUid()).removeValue();
+                }
             }
         });
 
@@ -83,6 +109,7 @@ public class UserAdapter extends RecyclerView.Adapter<UserAdapter.ViewHolder> {
         public TextView username;
         public CircleImageView image_profile;
         public Button btn_send;
+        public Button btn_follow;
 
 
 
@@ -93,7 +120,28 @@ public class UserAdapter extends RecyclerView.Adapter<UserAdapter.ViewHolder> {
             username = itemView.findViewById(R.id.username);
             image_profile = itemView.findViewById(R.id.image_profile);
             btn_send = itemView.findViewById(R.id.btn_send);
+            btn_follow = itemView.findViewById(R.id.btn_follow);
         }
+    }
+
+    private void isFollowing(final String userid, final Button button){
+        DatabaseReference reference = FirebaseDatabase.getInstance().getReference()
+                .child("KeepInTouch").child(firebaseUser.getUid()).child("alreadyBonded");
+        reference.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                if(dataSnapshot.child(userid).exists()){
+                    button.setText("alreadyBonded");
+                }else{
+                    button.setText("keepInTouch");
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+            }
+        });
     }
 
     private void isSending(String userid,Button button){

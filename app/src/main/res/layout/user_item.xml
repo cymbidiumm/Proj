@@ -36,6 +36,18 @@
     </LinearLayout>
 
     <Button
+        android:id="@+id/btn_follow"
+        android:layout_width="wrap_content"
+        android:layout_height="30dp"
+        android:layout_toStartOf="@+id/btn_send"
+        android:layout_centerVertical="true"
+        android:layout_marginRight="10dp"
+        android:background="#660408"
+        android:textColor="#ffffff"
+        android:padding="10dp"
+        android:visibility="gone" />
+
+    <Button
         android:id="@+id/btn_send"
         android:layout_width="wrap_content"
         android:layout_height="30dp"
@@ -48,7 +60,7 @@
         android:textColor="#ffffff"
         android:textSize="12sp"
         android:textStyle="bold"
-        android:visibility="gone" />
+        android:visibility="visible" />
 
 
 
